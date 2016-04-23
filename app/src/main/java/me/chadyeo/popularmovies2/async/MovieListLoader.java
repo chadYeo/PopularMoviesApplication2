@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import me.chadyeo.popularmovies2.api.MovieResponse;
 import me.chadyeo.popularmovies2.provider.MovieProvider;
 
-public class MovieListLoader extends AsyncTaskLoader<ArrayList<MovieResponse.Movie>>{
+public class MovieListLoader extends AsyncTaskLoader<ArrayList<MovieResponse.Movie>> {
 
     private ArrayList<Long> mFavoriteIds;
 
@@ -37,14 +37,14 @@ public class MovieListLoader extends AsyncTaskLoader<ArrayList<MovieResponse.Mov
             selectionMarks += "?,";
             favorites[i] = Long.toString(mFavoriteIds.get(i));
         }
-        selectionMarks = selectionMarks.substring(0, selectionMarks.length() -1);
-        String selection = MovieProvider.MovieContract._ID + "in (" + selectionMarks + ")";
+        selectionMarks = selectionMarks.substring(0, selectionMarks.length() - 1);
+        String selection = MovieProvider.MovieContract._ID + " in (" + selectionMarks + ")";
         Cursor cursor = getContext().getContentResolver()
                 .query(MovieProvider.MovieContract.CONTENT_URI, null,
                         selection, favorites, "");
         if (null == cursor) {
             return null;
-        } else if (cursor.getCount() <1){
+        } else if (cursor.getCount() < 1) {
             cursor.close();
             return new ArrayList<>();
         } else {
@@ -78,7 +78,7 @@ public class MovieListLoader extends AsyncTaskLoader<ArrayList<MovieResponse.Mov
     }
 
     @Override
-    public void onStopLoading() {
+    protected void onStopLoading() {
         cancelLoad();
     }
 }
