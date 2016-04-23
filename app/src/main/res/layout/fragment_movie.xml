@@ -35,15 +35,6 @@
                 android:src="@drawable/movie_placeholder"
                 app:layout_collapseMode="parallax" />
 
-            <ImageView
-                android:id="@+id/poster_image_view"
-                android:layout_width="@dimen/details_poster_width"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:layout_marginLeft="@dimen/details_poster_margin"
-                android:contentDescription="@string/desc_movie_backdrop"
-                android:scaleType="fitCenter"
-                android:src="@drawable/movie_placeholder" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"

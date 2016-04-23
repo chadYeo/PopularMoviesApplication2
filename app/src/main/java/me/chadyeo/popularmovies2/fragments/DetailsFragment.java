@@ -96,9 +96,6 @@ public class DetailsFragment extends Fragment
     @InjectView(R.id.backdrop_image_view)
     ImageView mBackdropImageView;
 
-    @InjectView(R.id.poster_image_view)
-    ImageView mPosterImageView;
-
     @InjectView(R.id.rating_text_view)
     TextView mRatingTextView;
 
@@ -225,10 +222,7 @@ public class DetailsFragment extends Fragment
                 .crossFade()
                 .bitmapTransform(transformation)
                 .into(mBackdropImageView);
-        Glide.with(this)
-                .load(mMovie.getPosterUrl())
-                .crossFade()
-                .into(mPosterImageView);
+
         mRatingTextView.setText(Float.toString(mMovie.rating));
         mDateTextView.setText(mMovie.releaseDate);
         if (mMovie.overview != null) {
